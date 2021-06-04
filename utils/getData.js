@@ -2,7 +2,7 @@ const getData =  async (username) => {
 	const responseData = await fetch(`https://api.github.com/users/${username}/repos`);
 	const data = await responseData.json();
 
-	const denyList = ['sineto/sineto'];
+	const denyList = ['matrix105/matrix105.github.io'];
 
 	const isNotFork = repository => !repository.fork;
 	const denyFilter = repository => denyList.indexOf(repository.full_name) === -1;

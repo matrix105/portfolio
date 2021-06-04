@@ -10,7 +10,7 @@ const Hero = () => {
 				<span className='inline-block w-auto px-2 py-1 text-xs text-center rounded-sm text-gray1 bg-green-lighter'>Software Engineer</span>
 				<h2 className='text-3xl'>Hello, I’m Marwan Tourky, a Software Engineer and Fullstack Developer</h2>
 				<p className='text-sm text-gray2'>I enjoy building Web Applications.</p>
-				<a className='px-4 py-2 mt-5 border-2 rounded-sm hover:bg-green-lighter hover:text-gray1 text-green-lighter border-green-lighter' href='mailto:Tourkym131@gmail.com'>Say hi!</a>
+				<a className='px-4 py-2 mt-5 border-2 rounded-sm hover:bg-green-lighter hover:text-gray1 text-green-lighter border-green-lighter' href='mailto:contact@marwant.me'>Say hi!</a>
 			</div>
 
 			<div className='flex items-center justify-end px-2 py-4 lg:-mt-10 lg:w-1/2 space-x-8 xl:p-12'>

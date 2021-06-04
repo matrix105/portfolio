@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaStar } from 'react-icons/fa';
+import { FaStar, FaCode } from 'react-icons/fa';
 import { GoRepoForked } from 'react-icons/go';
 
 const RepositoryCard = ({ repository }) => {
@@ -16,6 +16,10 @@ const RepositoryCard = ({ repository }) => {
 				<p className='flex items-center gap-1 text-green-lighter'>
 					<GoRepoForked className='inline' size={16} />
 					{repository.forks_count}
+				</p>
+				<p className='flex items-center gap-1 text-green-lighter'>
+					<FaCode className='inline' size={16} />
+					{repository.language}
 				</p>
 			</div>
 		</div>

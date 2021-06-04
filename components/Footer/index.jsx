@@ -40,10 +40,10 @@ const Footer = () => {
 							<FaEnvelope className='inline-block'/>
 							<a href='mailto:contact@marwant.me' target='_blank'>contact@marwant.me</a>
 						</li>
-						<li className='flex items-center sm:text-xl space-x-2'>
+						{/* <li className='flex items-center sm:text-xl space-x-2'>
 							<MdPhonelinkRing />
 							<a href='tel:39-388-1404-789' target='_blank'>+39-388-1404-789</a>
-						</li>
+						</li> */}
 					</ul>
 				</div>
 			</div>

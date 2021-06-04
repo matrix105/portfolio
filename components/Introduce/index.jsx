@@ -7,25 +7,26 @@ import Resume from './Resume';
 
 const resumeCards = [
 	{
-		title: 'Android Development',
-		description: 'I can develop android apps with clean architecture.',
+		title: 'ReactJs Development',
+		description: 'I develop modern and scalable apps with clean architecture.',
 		icon: () => <AiOutlineApi className='text-green-lighter' />
 	},
 	{
-		title: 'iOS Development',
-		description: 'I developed many iOS applications on app store.',
+		title: 'Fullstack Development',
+		description: 'I desig, build and maintain web applications and webistes for customers in different fields.',
 		icon: () => <FaCode className='text-green-lighter' />
 	},
 	{
-		title: 'UIUX Design',
+		title: 'UI/UX Design',
 		description: 'I care about the design of my apps so that will be easy to users to understand.',
 		icon: () => <AiOutlineCloudServer className='text-green-lighter' />
-	},
-	{
-		title: 'Machine Learning',
-		description: 'The study of computer algorithms that improve automatically through experience.Machine learning algorithms are used in a wide variety of applications, such as email filtering and computer vision, ',
-		icon: () => <AiFillRobot className='text-green-lighter' />
 	}
+	// ,
+	// {
+	// 	title: 'Machine Learning',
+	// 	description: 'The study of computer algorithms that improve automatically through experience.Machine learning algorithms are used in a wide variety of applications, such as email filtering and computer vision, ',
+	// 	icon: () => <AiFillRobot className='text-green-lighter' />
+	// }
 ];
 
 const Introduce = () => {
