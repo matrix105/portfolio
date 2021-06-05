@@ -1,7 +1,6 @@
 # My Personal Portfolio
-![protótipo v.1](/docs/page-preview.png "v.1")
 Project contains the source code of my personal porfolio available
-on: [https://matrix105.vercel.app](https://matrix105.vercel.app).
+on: [https://marwant.me](https://marwant.me).
 
 ## Technologies
 The website was built with:
@@ -32,7 +31,7 @@ $ yarn start
 
 ## Self-Promotion
 Do you like this project? Come on:
-- Star and follow the repository on [GitHub](https://matrix105.herokuapp.com/).
+- Star and follow the repository on [GitHub](https://github.com/matrix105/portfolio).
 - Follow me on
   - [GitHub](https://github.com/matrix105)
 
