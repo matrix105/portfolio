@@ -8,7 +8,7 @@ const ResumeCard = ({ card }) => {
 				{card.icon()}
 			</div>
 			<p className='mb-4 text-xs text-gray2'>{card.description}</p>
-			<a className='inline-block text-white uppercase border-transparent border-dotted text-tiny border-b-1 hover:border-white' href="http://www.url.com" target="_blank">Clients</a>
+			{/* <a className='inline-block text-white uppercase border-transparent border-dotted text-tiny border-b-1 hover:border-white' href="http://www.url.com" target="_blank">Clients</a> */}
 		</div>
 	);
 };
