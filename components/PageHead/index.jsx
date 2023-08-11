@@ -1,6 +1,6 @@
 import React from "react";
 import Head from "next/head";
-import { Helmet } from "react-helmet";
+// import { Helmet } from "react-helmet";
 
 const PageHead = () => {
   return (
@@ -65,7 +65,7 @@ const PageHead = () => {
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       <title>Marwan Tourky, Software Engineer</title>
 
-      <script
+      {/* <script
         async
         src="https://www.googletagmanager.com/gtag/js?id=G-ESW7C511KB"
       ></script>
@@ -77,7 +77,7 @@ const PageHead = () => {
 			  gtag('js', new Date());
 			  gtag('config', 'G-ESW7C511KB');`,
         }}
-      />
+      /> */}
     </Head>
   );
 };
