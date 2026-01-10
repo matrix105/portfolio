@@ -1,6 +1,5 @@
 import React from "react";
 import Head from "next/head";
-// import { Helmet } from "react-helmet";
 
 const PageHead = () => {
   return (
@@ -59,25 +58,16 @@ const PageHead = () => {
         href="/favicon-16x16.png"
       />
       <link rel="manifest" href="/manifest.json" />
-      <meta name="msapplication-TileColor" content="#ffffff" />
+      <meta name="msapplication-TileColor" content="#25262A" />
       <meta name="msapplication-TileImage" content="/ms-icon-144x144.png" />
-      <meta name="theme-color" content="#ffffff" />
+      <meta name="theme-color" content="#25262A" />
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-      <title>Marwan Tourky, Software Engineer</title>
-
-      {/* <script
-        async
-        src="https://www.googletagmanager.com/gtag/js?id=G-ESW7C511KB"
-      ></script>
-      <script
-        dangerouslySetInnerHTML={{
-          __html: `
-			  window.dataLayer = window.dataLayer || [];
-			  function gtag(){dataLayer.push(arguments);}
-			  gtag('js', new Date());
-			  gtag('config', 'G-ESW7C511KB');`,
-        }}
-      /> */}
+      <meta name="description" content="Marwan Tourky - AI Software Engineer & System Architect. Building intelligent systems, web applications, and digital tools that transform businesses and grow communities." />
+      <meta name="keywords" content="AI Engineer, Software Engineer, System Architect, Python, Nuxt.js, MongoDB, Tailwind, Machine Learning, Web Development" />
+      <meta property="og:title" content="Marwan Tourky | AI Software Engineer & System Architect" />
+      <meta property="og:description" content="Forging the future with Artificial Intelligence. Building intelligent systems and digital experiences that transform businesses." />
+      <meta property="og:type" content="website" />
+      <title>Marwan Tourky | AI Software Engineer & System Architect</title>
     </Head>
   );
 };

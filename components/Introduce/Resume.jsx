@@ -3,19 +3,29 @@ import React from "react";
 const Resume = () => {
   return (
     <div className="p-4 md:w-1/2">
-      <span className="text-xs text-gray2">About me</span>
-      <h2 className="text-3xl">
-        Hi! My name is <span className="border-b-1">Marwan Tourky</span>
+      <span className="text-xs text-gray2 uppercase tracking-wider">The Architect Behind the Code</span>
+      <h2 className="text-3xl mt-2">
+        I'm <span className="border-b-2 border-green-lighter">Marwan Tourky</span>
       </h2>
-      <p className="my-5 text-justify text-xm text-gray2">
-        I'm a software engineer who is passionate about building web and mobile
-        applications with <span className="text-green-lighter">React JS</span>{" "}
-        and <span className="text-green-lighter">Python</span>. Creating
-        technology to elevate people, and building community. Some technologies
-        I enjoy working with include{" "}
-        <span className="text-green-lighter">APIs</span> and I love making
-        simple things with great impact. I spend my time writing code or
-        reading about interesting things, I also like meeting people and leaning new skills.
+      <p className="my-5 text-justify text-xm text-gray2 leading-relaxed">
+        I'm an <span className="text-green-lighter font-semibold">AI Software Engineer</span> and{" "}
+        <span className="text-green-lighter font-semibold">System Architect</span> on a mission to forge
+        the future of technology. I build intelligent systems that don't just process data—they{" "}
+        <span className="text-green-lighter">think</span>,{" "}
+        <span className="text-green-lighter">learn</span>, and{" "}
+        <span className="text-green-lighter">evolve</span>.
+      </p>
+      <p className="my-5 text-justify text-xm text-gray2 leading-relaxed">
+        My arsenal includes <span className="text-green-lighter">Python</span> for AI/ML engineering,{" "}
+        <span className="text-green-lighter">Nuxt.js</span> for blazing-fast web experiences,{" "}
+        <span className="text-green-lighter">MongoDB</span> for flexible data architectures, and{" "}
+        <span className="text-green-lighter">Tailwind CSS</span> for pixel-perfect interfaces.
+        I craft software, web applications, landing pages, and digital tools that don't just
+        solve problems—they <span className="text-white font-semibold">transform businesses</span> and{" "}
+        <span className="text-white font-semibold">grow communities</span>.
+      </p>
+      <p className="my-5 text-justify text-xm text-gray2 leading-relaxed">
+        Every line of code I write is a step toward a smarter, more connected world.
       </p>
     </div>
   );
