@@ -1,11 +1,12 @@
 import React from "react";
 import { motion } from "framer-motion";
 import SectionHeader from "../SectionHeader";
+import { useLanguage } from "../../lib/LanguageContext";
 
-const groups = [
+const groupConfig = [
   {
-    title: "Backend",
-    badge: "primary",
+    key: "backend",
+    badged: true,
     accent: "cyber-blue",
     items: [
       { name: "node", version: "20" },
@@ -18,7 +19,7 @@ const groups = [
     ],
   },
   {
-    title: "AI & Agents",
+    key: "ai",
     accent: "purple-glow",
     items: [
       { name: "vercel ai sdk", version: "*" },
@@ -31,7 +32,7 @@ const groups = [
     ],
   },
   {
-    title: "Frontend",
+    key: "frontend",
     accent: "green-lighter",
     items: [
       { name: "nuxt", version: "3" },
@@ -42,7 +43,7 @@ const groups = [
     ],
   },
   {
-    title: "Infra",
+    key: "infra",
     accent: "gold-accent",
     items: [
       { name: "docker", version: "*" },
@@ -55,10 +56,14 @@ const groups = [
 ];
 
 const accentMap = {
-  "green-lighter": "text-green-lighter border-green-lighter/30 hover:border-green-lighter/60 hover:bg-green-lighter/5",
-  "purple-glow": "text-purple-glow border-purple-glow/30 hover:border-purple-glow/60 hover:bg-purple-glow/5",
-  "cyber-blue": "text-cyber-blue border-cyber-blue/30 hover:border-cyber-blue/60 hover:bg-cyber-blue/5",
-  "gold-accent": "text-gold-accent border-gold-accent/30 hover:border-gold-accent/60 hover:bg-gold-accent/5",
+  "green-lighter":
+    "text-green-lighter border-green-lighter/30 hover:border-green-lighter/60 hover:bg-green-lighter/5",
+  "purple-glow":
+    "text-purple-glow border-purple-glow/30 hover:border-purple-glow/60 hover:bg-purple-glow/5",
+  "cyber-blue":
+    "text-cyber-blue border-cyber-blue/30 hover:border-cyber-blue/60 hover:bg-cyber-blue/5",
+  "gold-accent":
+    "text-gold-accent border-gold-accent/30 hover:border-gold-accent/60 hover:bg-gold-accent/5",
 };
 
 const headerColorMap = {
@@ -76,21 +81,28 @@ const badgeMap = {
 };
 
 const Stack = () => {
+  const { t } = useLanguage();
+  const groups = groupConfig.map((g) => ({
+    ...g,
+    title: t(`stack.${g.key}`),
+    badge: g.badged ? t("stack.primaryBadge") : null,
+  }));
+
   return (
     <section id="stack" className="relative bg-gray0 border-t border-terminal-border">
       <div className="absolute inset-0 bg-grid-lines opacity-30 pointer-events-none" aria-hidden />
       <div className="relative max-w-7xl mx-auto px-6 md:px-10 py-20">
         <SectionHeader
           index="03"
-          label="stack"
-          title="Tools I reach for first."
+          label={t("header.nav.stack")}
+          title={t("stack.title")}
           accent="cyber-blue"
         />
 
         <div className="grid md:grid-cols-2 gap-6">
           {groups.map((group, gi) => (
             <motion.div
-              key={group.title}
+              key={group.key}
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
@@ -103,18 +115,22 @@ const Stack = () => {
                     {group.title}
                   </span>
                   {group.badge && (
-                    <span className={`text-tiny px-1.5 py-0.5 rounded border ${badgeMap[group.accent]} uppercase tracking-wider`}>
+                    <span
+                      className={`text-tiny px-1.5 py-0.5 rounded border ${badgeMap[group.accent]} uppercase tracking-wider`}
+                    >
                       {group.badge}
                     </span>
                   )}
                   <span className="text-gray2">/</span>
-                  <span className="text-gray2">{group.items.length} packages</span>
+                  <span className="text-gray2">
+                    {group.items.length} {t("stack.packagesSuffix")}
+                  </span>
                 </div>
                 <span className="font-mono text-tiny text-gray2 opacity-60">
                   {String(gi + 1).padStart(2, "0")}
                 </span>
               </div>
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-wrap gap-2" dir="ltr">
                 {group.items.map((item) => (
                   <span
                     key={item.name}
@@ -136,7 +152,7 @@ const Stack = () => {
           transition={{ duration: 0.4, delay: 0.4 }}
           className="mt-8 font-mono text-tiny text-gray2"
         >
-          // node and typescript across the stack. python where it earns its keep.
+          {t("stack.footer")}
         </motion.p>
       </div>
     </section>

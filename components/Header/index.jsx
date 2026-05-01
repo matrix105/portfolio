@@ -1,15 +1,19 @@
 import React from "react";
 import { FaLinkedin, FaGithub } from "react-icons/fa";
 import { motion } from "framer-motion";
-
-const navLinks = [
-  { label: "about", href: "#about" },
-  { label: "stack", href: "#stack" },
-  { label: "work", href: "#work" },
-  { label: "contact", href: "#contact" },
-];
+import { useLanguage } from "../../lib/LanguageContext";
+import LangSwitcher from "../LangSwitcher";
 
 const Header = () => {
+  const { t } = useLanguage();
+
+  const navLinks = [
+    { key: "about", href: "#about" },
+    { key: "stack", href: "#stack" },
+    { key: "work", href: "#work" },
+    { key: "contact", href: "#contact" },
+  ];
+
   return (
     <motion.header
       initial={{ opacity: 0, y: -8 }}
@@ -22,6 +26,7 @@ const Header = () => {
           href="#"
           className="flex items-center gap-3 group"
           aria-label="Marwan Tourky · home"
+          dir="ltr"
         >
           <span className="font-mono text-sm">
             <span className="text-green-lighter">marwan</span>
@@ -33,7 +38,7 @@ const Header = () => {
           </span>
           <span className="hidden xm:inline-flex items-center gap-1.5 px-2 py-0.5 rounded border border-green-lighter/30 text-green-lighter font-mono text-tiny">
             <span className="w-1.5 h-1.5 rounded-full bg-green-lighter animate-pulse" aria-hidden />
-            available
+            {t("header.available")}
           </span>
         </a>
 
@@ -45,7 +50,7 @@ const Header = () => {
                   href={link.href}
                   className="text-gray2 hover:text-green-lighter transition-colors"
                 >
-                  {link.label}
+                  {t(`header.nav.${link.key}`)}
                 </a>
               </li>
             ))}
@@ -53,6 +58,7 @@ const Header = () => {
         </nav>
 
         <div className="flex items-center gap-3">
+          <LangSwitcher />
           <a
             href="https://www.linkedin.com/in/marwantourky/"
             target="_blank"

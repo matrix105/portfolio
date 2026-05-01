@@ -1,7 +1,9 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { useLanguage } from "../../lib/LanguageContext";
 
 const Resume = () => {
+  const { t } = useLanguage();
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -12,57 +14,54 @@ const Resume = () => {
     >
       <div className="flex items-center gap-2 font-mono text-xs text-gray2 mb-3">
         <span className="w-1.5 h-1.5 rounded-full bg-green-lighter" aria-hidden />
-        <span>// what i do</span>
+        <span>{t("about.label")}</span>
       </div>
       <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white tracking-tight">
-        Engineering at the seam between{" "}
-        <span className="text-purple-glow">agents</span> and{" "}
-        <span className="text-cyber-blue">production</span>.
+        {t("about.headingPrefix")}
+        <span className="text-purple-glow">{t("about.headingA")}</span>
+        {t("about.headingMid")}
+        <span className="text-cyber-blue">{t("about.headingB")}</span>
+        {t("about.headingSuffix")}
       </h2>
       <p className="mt-5 text-sm text-gray2 leading-relaxed">
-        I'm an{" "}
-        <span className="text-white">AI software engineer</span> with a research and
-        development background. I design system architectures and build the
-        software around them — backend, frontend, data layer, and the agentic
-        AI components stitched through.
+        {t("about.p1.a")}
+        <span className="text-white">{t("about.p1.b")}</span>
+        {t("about.p1.c")}
       </p>
       <p className="mt-4 text-sm text-gray2 leading-relaxed">
-        Most of my recent work is around{" "}
-        <span className="text-white">LLM applications</span> and{" "}
-        <span className="text-white">agentic systems</span>: retrieval pipelines,
-        agent runtimes, evaluation harnesses, and the production plumbing that
-        makes them safe to ship. I work primarily in{" "}
-        <span className="text-green-lighter">Node</span> and{" "}
-        <span className="text-green-lighter">TypeScript</span> across the stack —
-        agent runtimes, services, and Nuxt / Vue front-ends on top. Python comes
-        in when the AI work calls for it.
+        {t("about.p2.a")}
+        <span className="text-white">{t("about.p2.b")}</span>
+        {t("about.p2.c")}
+        <span className="text-white">{t("about.p2.d")}</span>
+        {t("about.p2.e")}
+        <span className="text-green-lighter">{t("about.p2.f")}</span>
+        {t("about.p2.g")}
+        <span className="text-green-lighter">{t("about.p2.h")}</span>
+        {t("about.p2.i")}
       </p>
-      <p className="mt-4 text-sm text-gray2 leading-relaxed">
-        I work as a consultant. I take on projects where the architecture isn't
-        decided yet, or where it needs to be rethought.
-      </p>
+      <p className="mt-4 text-sm text-gray2 leading-relaxed">{t("about.p3")}</p>
 
       <div className="mt-6 flex flex-wrap gap-2 font-mono text-tiny">
         <span className="px-2.5 py-1 rounded border border-terminal-border text-gray2">
-          <span className="text-purple-glow">~</span> 7y software
+          <span className="text-purple-glow">~</span> {t("about.pillSoftware")}
         </span>
         <span className="px-2.5 py-1 rounded border border-terminal-border text-gray2">
-          <span className="text-cyber-blue">~</span> 4y ai &amp; agents
+          <span className="text-cyber-blue">~</span> {t("about.pillAi")}
         </span>
         <span className="px-2.5 py-1 rounded border border-terminal-border text-gray2">
-          <span className="text-green-lighter">~</span> r&amp;d background
+          <span className="text-green-lighter">~</span> {t("about.pillRd")}
         </span>
       </div>
 
       <div className="mt-4">
         <div className="flex items-center gap-2 font-mono text-tiny text-gray2 mb-2">
           <span className="w-1 h-1 rounded-full bg-gold-accent" aria-hidden />
-          <span>// credentials</span>
+          <span>{t("about.credentialsLabel")}</span>
         </div>
         <div className="flex flex-wrap gap-2 font-mono text-tiny">
           <span className="inline-flex items-center gap-2 px-2.5 py-1 rounded border border-gold-accent/30 bg-gold-accent/5 text-white">
             <span className="text-gold-accent">★</span>
-            anthropic certified
+            {t("hero.anthropicCertified")}
           </span>
         </div>
       </div>

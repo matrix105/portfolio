@@ -5,6 +5,7 @@ import { HiOutlineCode } from "react-icons/hi";
 
 import CodeBlock from "../CodeBlock";
 import Typewriter from "./Typewriter";
+import { useLanguage } from "../../lib/LanguageContext";
 
 const heroCode = [
   [
@@ -126,6 +127,7 @@ const heroCode = [
 ];
 
 const Hero = () => {
+  const { t, locale, isRtl } = useLanguage();
   return (
     <section className="relative overflow-hidden min-h-[88vh] flex items-center bg-noise">
       {/* Layered backgrounds */}
@@ -151,14 +153,14 @@ const Hero = () => {
           >
             <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded border border-green-lighter/40 text-green-lighter bg-green-lighter/5">
               <span className="w-1.5 h-1.5 rounded-full bg-green-lighter animate-pulse" />
-              available for new work
+              {t("hero.availableForWork")}
             </span>
             <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded border border-gold-accent/40 text-gold-accent bg-gold-accent/5">
               <span aria-hidden>★</span>
-              anthropic certified
+              {t("hero.anthropicCertified")}
             </span>
             <span className="text-gray2">·</span>
-            <span className="text-gray2">remote</span>
+            <span className="text-gray2">{t("hero.remote")}</span>
           </motion.div>
 
           <motion.div
@@ -167,19 +169,22 @@ const Hero = () => {
             transition={{ duration: 0.5, delay: 0.05 }}
             className="font-mono text-sm text-gray2"
           >
-            <span className="text-purple-glow">senior</span>{" "}
-            <span className="text-white">ai software engineer</span>
+            <span className="text-purple-glow">{t("hero.role.senior")}</span>{" "}
+            <span className="text-white">{t("hero.role.aiEngineer")}</span>
             <span className="text-gray2"> · </span>
-            <span className="text-cyber-blue">system architect</span>
+            <span className="text-cyber-blue">{t("hero.role.architect")}</span>
             <span className="text-gray2"> · </span>
-            <span className="text-green-lighter">full-stack</span>
+            <span className="text-green-lighter">{t("hero.role.fullstack")}</span>
           </motion.div>
 
           <motion.h1
             initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight leading-[1.05] text-white"
+            dir="ltr"
+            className={`text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight leading-[1.05] text-white ${
+              isRtl ? "text-right" : ""
+            }`}
           >
             Marwan{" "}
             <span className="text-gradient">Tourky</span>
@@ -187,13 +192,14 @@ const Hero = () => {
           </motion.h1>
 
           <motion.p
+            key={`tw-${locale}`}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.3 }}
             className="text-lg sm:text-xl text-white/90 leading-relaxed font-mono"
           >
             <span className="text-gray2">{"> "}</span>
-            <Typewriter text="I design and ship agentic AI systems — from prototype to production." />
+            <Typewriter text={t("hero.typewriter")} />
           </motion.p>
 
           <motion.p
@@ -202,12 +208,13 @@ const Hero = () => {
             transition={{ duration: 0.5, delay: 1.6 }}
             className="text-sm sm:text-base text-gray2 max-w-xl leading-relaxed"
           >
-            Independent consultant. I work with teams on{" "}
-            <span className="text-white">LLM applications</span>,{" "}
-            <span className="text-white">agent runtimes</span>,{" "}
-            <span className="text-white">retrieval systems</span>, and the
-            full-stack tooling around them. Node and TypeScript across the
-            stack, architecture-first, comfortable end-to-end.
+            {t("hero.description.prefix")}
+            <span className="text-white">{t("hero.description.a")}</span>
+            {t("hero.description.comma1")}
+            <span className="text-white">{t("hero.description.b")}</span>
+            {t("hero.description.comma2")}
+            <span className="text-white">{t("hero.description.c")}</span>
+            {t("hero.description.suffix")}
           </motion.p>
 
           <motion.div
@@ -221,25 +228,31 @@ const Hero = () => {
               className="group inline-flex items-center gap-2 px-5 py-3 font-mono text-sm font-semibold rounded bg-green-lighter text-gray0 hover:shadow-glow transition-all duration-300"
             >
               <FaTerminal className="text-xs" aria-hidden />
-              get in touch
-              <FaArrowRight className="text-xs transition-transform duration-300 group-hover:translate-x-1" aria-hidden />
+              {t("hero.ctaPrimary")}
+              <FaArrowRight
+                className={`text-xs transition-transform duration-300 group-hover:translate-x-1 ${
+                  isRtl ? "rotate-180" : ""
+                }`}
+                aria-hidden
+              />
             </a>
             <a
               href="#work"
               className="group inline-flex items-center gap-2 px-5 py-3 font-mono text-sm font-semibold rounded border border-terminal-border text-white hover:border-green-lighter hover:text-green-lighter transition-all duration-300"
             >
               <HiOutlineCode className="text-base" aria-hidden />
-              see work
+              {t("hero.ctaSecondary")}
             </a>
           </motion.div>
         </div>
 
-        {/* Right: code block */}
+        {/* Right: code block — always LTR */}
         <motion.div
           initial={{ opacity: 0, x: 24 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.7, delay: 0.4, ease: "easeOut" }}
           className="relative"
+          dir="ltr"
         >
           {/* Glow */}
           <div className="absolute -inset-4 bg-radial-fade blur-2xl opacity-60 pointer-events-none" aria-hidden />
@@ -253,8 +266,8 @@ const Hero = () => {
             className="absolute -bottom-3 right-4 px-3 py-1.5 rounded bg-gray1 border border-terminal-border font-mono text-xs flex items-center gap-2 shadow-card"
           >
             <span className="w-1.5 h-1.5 rounded-full bg-green-lighter animate-pulse" aria-hidden />
-            <span className="text-gray2">eval:</span>
-            <span className="text-green-lighter">passing</span>
+            <span className="text-gray2">{t("hero.evalLabel")}</span>
+            <span className="text-green-lighter">{t("hero.evalValue")}</span>
           </motion.div>
         </motion.div>
       </div>

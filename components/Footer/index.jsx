@@ -1,9 +1,11 @@
 import React from "react";
 import { FaEnvelope, FaGithub, FaLinkedinIn, FaTelegramPlane } from "react-icons/fa";
 import { motion } from "framer-motion";
+import { useLanguage } from "../../lib/LanguageContext";
 
 const Footer = () => {
   const year = new Date().getFullYear();
+  const { t } = useLanguage();
 
   return (
     <footer
@@ -19,7 +21,10 @@ const Footer = () => {
           transition={{ duration: 0.5 }}
           className="rounded-lg border border-terminal-border bg-gray1/40 overflow-hidden"
         >
-          <div className="flex items-center justify-between px-5 py-2.5 border-b border-terminal-border bg-terminal-bg/60">
+          <div
+            className="flex items-center justify-between px-5 py-2.5 border-b border-terminal-border bg-terminal-bg/60"
+            dir="ltr"
+          >
             <div className="flex items-center gap-2">
               <span className="w-2.5 h-2.5 rounded-full bg-[#ff5f56] opacity-60" aria-hidden />
               <span className="w-2.5 h-2.5 rounded-full bg-[#ffbd2e] opacity-60" aria-hidden />
@@ -30,23 +35,23 @@ const Footer = () => {
           </div>
 
           <div className="p-6 sm:p-8 grid md:grid-cols-2 gap-8 items-center">
-            <div className="font-mono text-sm space-y-2">
+            <div className="font-mono text-sm space-y-2" dir="ltr">
               <div>
                 <span className="text-green-lighter">marwan@tourky</span>
                 <span className="text-gray2">:</span>
                 <span className="text-cyber-blue">~</span>
                 <span className="text-gray2">$ </span>
-                <span className="text-white">echo $STATUS</span>
+                <span className="text-white">{t("footer.statusEcho")}</span>
               </div>
-              <div className="text-gray2 pl-2 border-l border-terminal-border">
-                Available for new consulting work.
+              <div className="text-gray2 pl-2 border-l border-terminal-border" dir="auto">
+                {t("footer.statusValue")}
               </div>
               <div className="pt-3">
                 <span className="text-green-lighter">marwan@tourky</span>
                 <span className="text-gray2">:</span>
                 <span className="text-cyber-blue">~</span>
                 <span className="text-gray2">$ </span>
-                <span className="text-white">echo $EMAIL</span>
+                <span className="text-white">{t("footer.emailEcho")}</span>
               </div>
               <a
                 href="mailto:contact@marwant.me"
@@ -62,7 +67,7 @@ const Footer = () => {
                 className="self-start md:self-end inline-flex items-center gap-2 px-4 py-2.5 rounded bg-green-lighter text-gray0 font-mono text-sm font-semibold hover:shadow-glow transition-all duration-300"
               >
                 <FaEnvelope />
-                start a conversation
+                {t("footer.cta")}
               </a>
               <ul className="flex items-center gap-3 text-gray2">
                 <li>
@@ -105,7 +110,7 @@ const Footer = () => {
 
         <div className="mt-10 flex flex-wrap items-center justify-between gap-6 font-mono text-tiny text-gray2">
           <span>
-            © {year} marwan tourky · built with next, tailwind, framer-motion
+            © {year} {t("footer.copyright")}
           </span>
           <a
             href="https://partnernetwork.ionos.it/partner/marwan.tourky?origin=PartnerBadge"

@@ -22,7 +22,7 @@ const accentMap = {
   },
 };
 
-const WorkCard = ({ project, index = 0 }) => {
+const WorkCard = ({ project, index = 0, labels }) => {
   const accent = accentMap[project.accent];
   return (
     <motion.article
@@ -36,35 +36,37 @@ const WorkCard = ({ project, index = 0 }) => {
       <div className="flex items-center justify-between px-5 py-3 border-b border-terminal-border bg-terminal-bg/60">
         <div className="flex items-center gap-2 font-mono text-tiny">
           <span className={`w-1.5 h-1.5 rounded-full ${accent.bg}`} aria-hidden />
-          <span className="text-gray2 uppercase tracking-wider">case · {String(index + 1).padStart(2, "0")}</span>
+          <span className="text-gray2 uppercase tracking-wider">
+            {labels.caseLabel} · {String(index + 1).padStart(2, "0")}
+          </span>
         </div>
         <span className="font-mono text-tiny text-gray2">{project.year}</span>
       </div>
 
       <div className="flex flex-col p-5 gap-4 flex-1">
         <div>
-          <h3 className="text-lg font-semibold text-white tracking-tight">
-            {project.title}
-          </h3>
-          <p className={`mt-1 font-mono text-xs ${accent.text}`}>{project.subtitle}</p>
+          <h3 className="text-lg font-semibold text-white tracking-tight">{project.title}</h3>
+          <p className={`mt-1 font-mono text-xs ${accent.text}`} dir="ltr">
+            {project.subtitle}
+          </p>
         </div>
 
         <dl className="flex flex-col gap-2.5 text-xs sm:text-[13px] text-gray2">
           <div className="flex gap-3">
             <dt className="font-mono text-tiny uppercase tracking-wider text-gray2/70 w-20 flex-shrink-0 pt-0.5">
-              Problem
+              {labels.problem}
             </dt>
             <dd className="leading-relaxed">{project.problem}</dd>
           </div>
           <div className="flex gap-3">
             <dt className="font-mono text-tiny uppercase tracking-wider text-gray2/70 w-20 flex-shrink-0 pt-0.5">
-              Approach
+              {labels.approach}
             </dt>
             <dd className="leading-relaxed">{project.approach}</dd>
           </div>
           <div className="flex gap-3">
             <dt className="font-mono text-tiny uppercase tracking-wider text-gray2/70 w-20 flex-shrink-0 pt-0.5">
-              Outcome
+              {labels.outcome}
             </dt>
             <dd className="leading-relaxed text-white/90">
               {project.outcome.split(/(\b\d+%?\b|~?\d+x\b)/).map((piece, i) =>
@@ -80,7 +82,7 @@ const WorkCard = ({ project, index = 0 }) => {
           </div>
         </dl>
 
-        <div className="mt-auto pt-4 border-t border-terminal-border flex flex-wrap gap-1.5">
+        <div className="mt-auto pt-4 border-t border-terminal-border flex flex-wrap gap-1.5" dir="ltr">
           {project.stack.map((tag) => (
             <span
               key={tag}

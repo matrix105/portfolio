@@ -1,9 +1,17 @@
 import Head from "next/head";
-
-const description =
-  "Independent AI software engineer and system architect. LLM applications, agent pipelines, retrieval systems, and full-stack delivery. Python, Nuxt, Vue, TypeScript.";
+import { useLanguage } from "../../lib/LanguageContext";
 
 const PageHead = () => {
+  const { t } = useLanguage();
+  const title = t(
+    "meta.title",
+    "Marwan Tourky — Senior AI Software Engineer & System Architect"
+  );
+  const description = t(
+    "meta.description",
+    "Independent AI software engineer and system architect."
+  );
+
   return (
     <Head>
       <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png" />
@@ -27,12 +35,12 @@ const PageHead = () => {
       <meta name="description" content={description} />
       <meta
         name="keywords"
-        content="AI Software Engineer, System Architect, R&D, Consultant, LLM, RAG, Agents, Python, Nuxt, Vue, TypeScript, MongoDB"
+        content="AI Software Engineer, System Architect, R&D, Consultant, LLM, RAG, Agents, Node, TypeScript, Nuxt, Vue, MongoDB"
       />
-      <meta property="og:title" content="Marwan Tourky — Senior AI Software Engineer & System Architect" />
+      <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
       <meta property="og:type" content="website" />
-      <title>Marwan Tourky — Senior AI Software Engineer & System Architect</title>
+      <title>{title}</title>
     </Head>
   );
 };
