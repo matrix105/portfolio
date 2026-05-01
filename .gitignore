@@ -82,6 +82,16 @@ web_modules/
 .next
 out
 
+# Screenshots from local dev/testing
+.screenshots/
+
+# macOS
+.DS_Store
+
+# IDE
+.vs/
+.vscode/
+
 # Nuxt.js build / generate output
 .nuxt
 dist

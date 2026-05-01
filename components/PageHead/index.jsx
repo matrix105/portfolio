@@ -1,12 +1,11 @@
 import Head from "next/head";
 
+const description =
+  "Independent AI software engineer and system architect. LLM applications, agent pipelines, retrieval systems, and full-stack delivery. Python, Nuxt, Vue, TypeScript.";
+
 const PageHead = () => {
   return (
     <Head>
-      <link
-        href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet"
-      />
       <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png" />
       <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png" />
       <link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png" />
@@ -21,16 +20,19 @@ const PageHead = () => {
       <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
       <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
       <link rel="manifest" href="/manifest.json" />
-      <meta name="msapplication-TileColor" content="#25262A" />
+      <meta name="msapplication-TileColor" content="#0d0e10" />
       <meta name="msapplication-TileImage" content="/ms-icon-144x144.png" />
-      <meta name="theme-color" content="#25262A" />
+      <meta name="theme-color" content="#0d0e10" />
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-      <meta name="description" content="Marwan Tourky - AI Software Engineer & System Architect. Building intelligent systems, web applications, and digital tools that transform businesses and grow communities." />
-      <meta name="keywords" content="AI Engineer, Software Engineer, System Architect, Python, Nuxt.js, MongoDB, Tailwind, Machine Learning, Web Development" />
-      <meta property="og:title" content="Marwan Tourky | AI Software Engineer & System Architect" />
-      <meta property="og:description" content="Forging the future with Artificial Intelligence. Building intelligent systems and digital experiences that transform businesses." />
+      <meta name="description" content={description} />
+      <meta
+        name="keywords"
+        content="AI Software Engineer, System Architect, R&D, Consultant, LLM, RAG, Agents, Python, Nuxt, Vue, TypeScript, MongoDB"
+      />
+      <meta property="og:title" content="Marwan Tourky — Senior AI Software Engineer & System Architect" />
+      <meta property="og:description" content={description} />
       <meta property="og:type" content="website" />
-      <title>Marwan Tourky | AI Software Engineer & System Architect</title>
+      <title>Marwan Tourky — Senior AI Software Engineer & System Architect</title>
     </Head>
   );
 };

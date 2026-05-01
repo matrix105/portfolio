@@ -2,9 +2,82 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  width: 100%;
-  font-family: 'Roboto Mono', monospace;
-  color: #ffffff;
-  background: #2D2E32 url('/images/bg-body.png') top right no-repeat;
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    width: 100%;
+    font-family: 'JetBrains Mono', 'Roboto Mono', monospace;
+    color: #e7e9ee;
+    background: #0d0e10;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::selection {
+    background: rgba(103, 243, 170, 0.25);
+    color: #67F3AA;
+  }
+}
+
+@layer components {
+  .bg-grid {
+    background-image: radial-gradient(circle, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+
+  .bg-grid-lines {
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  .bg-noise {
+    background-color: #0d0e10;
+    background-image:
+      radial-gradient(ellipse 800px 600px at 0% 0%, rgba(103, 243, 170, 0.06), transparent 60%),
+      radial-gradient(ellipse 600px 400px at 100% 0%, rgba(168, 85, 247, 0.05), transparent 60%);
+  }
+
+  .scanlines::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: repeating-linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0.015) 0px,
+      rgba(255, 255, 255, 0.015) 1px,
+      transparent 1px,
+      transparent 3px
+    );
+  }
+
+  .text-gradient {
+    background: linear-gradient(135deg, #67F3AA 0%, #3B82F6 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .terminal-cursor::after {
+    content: '▋';
+    margin-left: 2px;
+    animation: blink 1s step-end infinite;
+    color: #67F3AA;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

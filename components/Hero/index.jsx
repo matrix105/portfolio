@@ -1,113 +1,264 @@
 import React from "react";
+import { motion } from "framer-motion";
+import { FaArrowRight, FaTerminal } from "react-icons/fa";
+import { HiOutlineCode } from "react-icons/hi";
 
-import { FaGithub, FaPython, FaBrain, FaRocket } from "react-icons/fa";
-import { BiLogoMongodb } from "react-icons/bi";
-import { SiNuxtdotjs, SiTailwindcss, SiOpenai } from "react-icons/si";
-import { AiFillRobot } from "react-icons/ai";
+import CodeBlock from "../CodeBlock";
+import Typewriter from "./Typewriter";
+
+const heroCode = [
+  [
+    { t: "keyword", v: "import" },
+    { t: "plain", v: " { Agent, tool, trace } " },
+    { t: "keyword", v: "from" },
+    { t: "plain", v: " " },
+    { t: "string", v: "\"@/core\"" },
+    { t: "punct", v: ";" },
+  ],
+  [
+    { t: "keyword", v: "import" },
+    { t: "plain", v: " { z } " },
+    { t: "keyword", v: "from" },
+    { t: "plain", v: " " },
+    { t: "string", v: "\"zod\"" },
+    { t: "punct", v: ";" },
+  ],
+  [],
+  [
+    { t: "keyword", v: "const" },
+    { t: "plain", v: " " },
+    { t: "variable", v: "SearchInput" },
+    { t: "plain", v: " = " },
+    { t: "fn", v: "z" },
+    { t: "punct", v: "." },
+    { t: "fn", v: "object" },
+    { t: "punct", v: "({" },
+  ],
+  [
+    { t: "plain", v: "  " },
+    { t: "variable", v: "query" },
+    { t: "punct", v: ": " },
+    { t: "fn", v: "z" },
+    { t: "punct", v: "." },
+    { t: "fn", v: "string" },
+    { t: "punct", v: "()," },
+  ],
+  [
+    { t: "plain", v: "  " },
+    { t: "variable", v: "k" },
+    { t: "punct", v: ": " },
+    { t: "fn", v: "z" },
+    { t: "punct", v: "." },
+    { t: "fn", v: "number" },
+    { t: "punct", v: "()." },
+    { t: "fn", v: "default" },
+    { t: "punct", v: "(" },
+    { t: "number", v: "8" },
+    { t: "punct", v: ")," },
+  ],
+  [
+    { t: "punct", v: "});" },
+  ],
+  [],
+  [
+    { t: "keyword", v: "export const" },
+    { t: "plain", v: " " },
+    { t: "variable", v: "researcher" },
+    { t: "plain", v: " = " },
+    { t: "keyword", v: "new" },
+    { t: "plain", v: " " },
+    { t: "fn", v: "Agent" },
+    { t: "punct", v: "({" },
+  ],
+  [
+    { t: "plain", v: "  " },
+    { t: "variable", v: "name" },
+    { t: "punct", v: ": " },
+    { t: "string", v: "\"researcher\"" },
+    { t: "punct", v: "," },
+  ],
+  [
+    { t: "plain", v: "  " },
+    { t: "variable", v: "model" },
+    { t: "punct", v: ": " },
+    { t: "string", v: "\"claude-opus-4-7\"" },
+    { t: "punct", v: "," },
+  ],
+  [
+    { t: "plain", v: "  " },
+    { t: "variable", v: "tools" },
+    { t: "punct", v: ": [" },
+    { t: "fn", v: "tool" },
+    { t: "punct", v: "(" },
+    { t: "string", v: "\"search\"" },
+    { t: "punct", v: ", " },
+    { t: "type", v: "SearchInput" },
+    { t: "punct", v: ", " },
+    { t: "variable", v: "search" },
+    { t: "punct", v: ")]," },
+  ],
+  [
+    { t: "plain", v: "  " },
+    { t: "variable", v: "evals" },
+    { t: "punct", v: ": [" },
+    { t: "string", v: "\"citation\"" },
+    { t: "punct", v: ", " },
+    { t: "string", v: "\"faithfulness\"" },
+    { t: "punct", v: "]," },
+  ],
+  [
+    { t: "punct", v: "});" },
+  ],
+  [],
+  [
+    { t: "comment", v: "// evaluate end-to-end before shipping" },
+  ],
+  [
+    { t: "keyword", v: "await" },
+    { t: "plain", v: " " },
+    { t: "variable", v: "researcher" },
+    { t: "punct", v: "." },
+    { t: "fn", v: "run" },
+    { t: "punct", v: "({ task: " },
+    { t: "string", v: "\"summarize Q4\"" },
+    { t: "punct", v: " });" },
+  ],
+];
 
 const Hero = () => {
   return (
-    <div className="flex flex-wrap items-center justify-center p-3 m-auto md:px-10 md:py-5 min-h-screen relative overflow-hidden">
-      {/* Floating particles effect */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-20 left-10 w-2 h-2 bg-green-lighter rounded-full opacity-30 animate-pulse"></div>
-        <div className="absolute top-40 right-20 w-3 h-3 bg-purple-glow rounded-full opacity-20 animate-pulse"></div>
-        <div className="absolute bottom-32 left-1/4 w-2 h-2 bg-cyber-blue rounded-full opacity-25 animate-pulse"></div>
-        <div className="absolute top-1/3 right-1/3 w-1 h-1 bg-green-lighter rounded-full opacity-40 animate-pulse"></div>
+    <section className="relative overflow-hidden min-h-[88vh] flex items-center bg-noise">
+      {/* Layered backgrounds */}
+      <div className="absolute inset-0 bg-grid-lines opacity-60 pointer-events-none" aria-hidden />
+      <div className="absolute inset-0 bg-radial-fade pointer-events-none" aria-hidden />
+
+      {/* Floating accent dots */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden>
+        <div className="absolute top-24 left-10 w-1.5 h-1.5 bg-green-lighter rounded-full opacity-50 animate-pulse" />
+        <div className="absolute top-40 right-24 w-2 h-2 bg-purple-glow rounded-full opacity-30 animate-pulse" />
+        <div className="absolute bottom-32 left-1/4 w-1 h-1 bg-cyber-blue rounded-full opacity-40 animate-pulse" />
+        <div className="absolute top-1/3 right-1/3 w-1 h-1 bg-gold-accent rounded-full opacity-50 animate-pulse" />
       </div>
 
-      <div className="flex flex-col items-start p-4 leading-snug lg:w-1/2 lg:p-12 space-y-6 z-10">
-        {/* Badge */}
-        <div className="flex items-center space-x-2">
-          <span className="inline-flex items-center px-3 py-1 text-xs font-bold rounded-sm text-gray1 bg-green-lighter">
-            <AiFillRobot className="mr-1" />
-            AI Software Engineer
-          </span>
-          <span className="inline-block px-3 py-1 text-xs rounded-sm text-green-lighter border border-green-lighter border-opacity-50">
-            System Architect
-          </span>
-        </div>
-
-        {/* Main Headline */}
-        <h1 className="text-4xl md:text-5xl font-bold leading-tight">
-          <span className="text-gray2">Forging the Future with</span>
-          <br />
-          <span className="text-green-lighter">Artificial Intelligence</span>
-        </h1>
-
-        {/* Subheadline */}
-        <h2 className="text-2xl text-white">
-          I'm <span className="border-b-2 border-green-lighter">Marwan Tourky</span>
-        </h2>
-
-        {/* Description */}
-        <p className="text-base text-gray2 max-w-lg leading-relaxed">
-          I architect intelligent systems and craft digital experiences that transform businesses.
-          From <span className="text-green-lighter">AI-powered solutions</span> to stunning web applications,
-          I build tools that <span className="text-green-lighter">elevate communities</span> and
-          drive <span className="text-green-lighter">exponential growth</span>.
-        </p>
-
-        {/* CTA Buttons */}
-        <div className="flex flex-wrap gap-4 mt-2">
-          <a
-            className="inline-flex items-center px-6 py-3 font-bold rounded-sm bg-green-lighter text-gray1 hover:bg-opacity-90 transition-all duration-300 hover:shadow-glow"
-            href="mailto:contact@marwant.me"
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-10 py-20 grid lg:grid-cols-2 gap-12 items-center">
+        {/* Left: copy */}
+        <div className="flex flex-col gap-6">
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4 }}
+            className="flex flex-wrap items-center gap-2 font-mono text-xs"
           >
-            <FaRocket className="mr-2" />
-            Let's Build Together
-          </a>
-          <a
-            className="inline-flex items-center px-6 py-3 font-bold border-2 rounded-sm hover:bg-green-lighter hover:text-gray1 text-green-lighter border-green-lighter transition-all duration-300"
-            href="#about"
+            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded border border-green-lighter/40 text-green-lighter bg-green-lighter/5">
+              <span className="w-1.5 h-1.5 rounded-full bg-green-lighter animate-pulse" />
+              available for new work
+            </span>
+            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded border border-gold-accent/40 text-gold-accent bg-gold-accent/5">
+              <span aria-hidden>★</span>
+              anthropic certified
+            </span>
+            <span className="text-gray2">·</span>
+            <span className="text-gray2">remote</span>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.05 }}
+            className="font-mono text-sm text-gray2"
           >
-            <FaBrain className="mr-2" />
-            Explore My Work
-          </a>
+            <span className="text-purple-glow">senior</span>{" "}
+            <span className="text-white">ai software engineer</span>
+            <span className="text-gray2"> · </span>
+            <span className="text-cyber-blue">system architect</span>
+            <span className="text-gray2"> · </span>
+            <span className="text-green-lighter">full-stack</span>
+          </motion.div>
+
+          <motion.h1
+            initial={{ opacity: 0, y: 18 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight leading-[1.05] text-white"
+          >
+            Marwan{" "}
+            <span className="text-gradient">Tourky</span>
+            <span className="text-gray2">.</span>
+          </motion.h1>
+
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="text-lg sm:text-xl text-white/90 leading-relaxed font-mono"
+          >
+            <span className="text-gray2">{"> "}</span>
+            <Typewriter text="I design and ship agentic AI systems — from prototype to production." />
+          </motion.p>
+
+          <motion.p
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 1.6 }}
+            className="text-sm sm:text-base text-gray2 max-w-xl leading-relaxed"
+          >
+            Independent consultant. I work with teams on{" "}
+            <span className="text-white">LLM applications</span>,{" "}
+            <span className="text-white">agent runtimes</span>,{" "}
+            <span className="text-white">retrieval systems</span>, and the
+            full-stack tooling around them. Node and TypeScript across the
+            stack, architecture-first, comfortable end-to-end.
+          </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 1.8 }}
+            className="flex flex-wrap gap-3 pt-2"
+          >
+            <a
+              href="mailto:contact@marwant.me"
+              className="group inline-flex items-center gap-2 px-5 py-3 font-mono text-sm font-semibold rounded bg-green-lighter text-gray0 hover:shadow-glow transition-all duration-300"
+            >
+              <FaTerminal className="text-xs" aria-hidden />
+              get in touch
+              <FaArrowRight className="text-xs transition-transform duration-300 group-hover:translate-x-1" aria-hidden />
+            </a>
+            <a
+              href="#work"
+              className="group inline-flex items-center gap-2 px-5 py-3 font-mono text-sm font-semibold rounded border border-terminal-border text-white hover:border-green-lighter hover:text-green-lighter transition-all duration-300"
+            >
+              <HiOutlineCode className="text-base" aria-hidden />
+              see work
+            </a>
+          </motion.div>
         </div>
+
+        {/* Right: code block */}
+        <motion.div
+          initial={{ opacity: 0, x: 24 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.7, delay: 0.4, ease: "easeOut" }}
+          className="relative"
+        >
+          {/* Glow */}
+          <div className="absolute -inset-4 bg-radial-fade blur-2xl opacity-60 pointer-events-none" aria-hidden />
+          <CodeBlock filename="agent.ts" language="typescript" lines={heroCode} className="relative" />
+
+          {/* Floating tag */}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 1.2 }}
+            className="absolute -bottom-3 right-4 px-3 py-1.5 rounded bg-gray1 border border-terminal-border font-mono text-xs flex items-center gap-2 shadow-card"
+          >
+            <span className="w-1.5 h-1.5 rounded-full bg-green-lighter animate-pulse" aria-hidden />
+            <span className="text-gray2">eval:</span>
+            <span className="text-green-lighter">passing</span>
+          </motion.div>
+        </motion.div>
       </div>
-
-      {/* Tech Stack Display */}
-      <div className="flex flex-col items-center justify-center px-2 py-8 lg:w-1/2 z-10">
-        {/* Central AI Icon */}
-        <div className="relative mb-8">
-          <div className="absolute inset-0 bg-green-lighter opacity-20 blur-xl rounded-full"></div>
-          <SiOpenai className="text-8xl text-green-lighter relative z-10" />
-        </div>
-
-        {/* Tech Stack Grid */}
-        <div className="grid grid-cols-4 gap-6">
-          <div className="flex flex-col items-center group">
-            <FaPython className="text-5xl text-gray2 group-hover:text-green-lighter transition-colors duration-300" />
-            <span className="text-xs text-gray2 mt-2 opacity-0 group-hover:opacity-100 transition-opacity">Python</span>
-          </div>
-          <div className="flex flex-col items-center group">
-            <SiNuxtdotjs className="text-5xl text-gray2 group-hover:text-green-lighter transition-colors duration-300" />
-            <span className="text-xs text-gray2 mt-2 opacity-0 group-hover:opacity-100 transition-opacity">Nuxt</span>
-          </div>
-          <div className="flex flex-col items-center group">
-            <BiLogoMongodb className="text-5xl text-gray2 group-hover:text-green-lighter transition-colors duration-300" />
-            <span className="text-xs text-gray2 mt-2 opacity-0 group-hover:opacity-100 transition-opacity">MongoDB</span>
-          </div>
-          <div className="flex flex-col items-center group">
-            <SiTailwindcss className="text-5xl text-gray2 group-hover:text-green-lighter transition-colors duration-300" />
-            <span className="text-xs text-gray2 mt-2 opacity-0 group-hover:opacity-100 transition-opacity">Tailwind</span>
-          </div>
-        </div>
-
-        {/* Additional Icons Row */}
-        <div className="flex items-center justify-center mt-6 space-x-8">
-          <AiFillRobot className="text-4xl text-gray2 opacity-50 hover:opacity-100 hover:text-green-lighter transition-all duration-300" />
-          <FaBrain className="text-4xl text-gray2 opacity-50 hover:opacity-100 hover:text-green-lighter transition-all duration-300" />
-          <FaGithub className="text-4xl text-gray2 opacity-50 hover:opacity-100 hover:text-green-lighter transition-all duration-300" />
-        </div>
-
-        {/* Tagline */}
-        <p className="text-sm text-gray2 mt-8 text-center italic">
-          "Where Code Meets Intelligence"
-        </p>
-      </div>
-    </div>
+    </section>
   );
 };
 
